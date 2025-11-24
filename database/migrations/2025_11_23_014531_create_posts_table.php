@@ -7,16 +7,16 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * genera la migración.
      */
     public function up(): void
-    {    // Create the 'posts' table
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('title'); 
-            $table->text('content');
-            $table->unsignedBigInteger('user_id');
-            $table->timestamps();
+    {    // Crea la tabla 'posts' con los campos necesarios
+        Schema::create('posts', function (Blueprint $table) {  // Define las columnas de la tabla
+            $table->id();        // ID autoincremental
+            $table->string('title');    // Título del post
+            $table->text('content');    // Contenido del post
+            $table->unsignedBigInteger('user_id'); // ID del usuario que creó el post
+            $table->timestamps(); // Marca de tiempo de creación y actualización
         });
     }
 

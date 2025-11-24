@@ -14,7 +14,8 @@ class CheckAuthToken
         if (!$token) {
             return response()->json(['error' => 'Token no proporcionado'], 401);
         }
-
+        
+        // Llama al microservicio de autenticación para validar el token
         $response = Http::withToken($token)
             ->get('http://192.168.100.92:8000/api/validate-token'); // URL del microservicio de autenticación
 

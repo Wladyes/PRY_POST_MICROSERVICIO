@@ -10,13 +10,15 @@ return Application::configure(basePath: dirname(__DIR__))
         api: __DIR__.'/../routes/api.php', // Ruta al archivo de rutas API
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
-    )
+    ) 
+    // Configura el middleware personalizado para autenticación de microservicio
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
         'auth.micro' => \App\Http\Middleware\CheckAuthToken::class, // Middleware personalizado para autenticación de microservicio
          ]);
         
     })
+    // Configura el manejo de excepciones
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
